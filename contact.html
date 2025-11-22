@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rewear – Contact Us</title>
+  <meta name="description" content="Contact the Rewear team with questions, feedback or collaboration ideas.">
+
+  <style>
+    :root {
+      --bg: #f7f2ec;
+      --card: #ffffff;
+      --primary: #355e3b;
+      --accent: #d9b08c;
+      --text-main: #3a3a3a;
+      --text-muted: #77716a;
+      --border: #e0d4c8;
+      --radius: 1rem;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.06);
+      --max-width: 980px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    img { max-width: 100%; display: block; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.25rem 1.1rem;
+    }
+
+    /* ---------- NAVBAR (same style) ---------- */
+
+    header {
+      background: #fdf7f0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+      position: relative;
+    }
+
+    .logo-mark::before {
+      content: "";
+      width: 22px;
+      height: 10px;
+      border: 2px solid var(--primary);
+      border-top-color: transparent;
+      border-radius: 0 0 999px 999px;
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo-mark::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+      border-top-color: transparent;
+      border-left-color: transparent;
+      transform: rotate(40deg);
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(40deg);
+    }
+
+    .logo-text {
+      font-family: "Georgia", serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #222;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-center a {
+      position: relative;
+      padding-bottom: 0.15rem;
+      color: #4b433d;
+    }
+
+    .nav-center a.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-center a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav-center a:hover::after,
+    .nav-center a.active::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4b433d;
+    }
+
+    /* ---------- PAGE HEADER ---------- */
+
+    main { flex: 1; }
+
+    .page-header {
+      padding: 2rem 0 1.2rem;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: "Georgia", serif;
+      font-size: 2rem;
+      color: #2f2a25;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin: 0.3rem auto;
+    }
+
+    /* ---------- CONTACT CONTENT ---------- */
+
+    .contact-section {
+      padding: 2rem 0 3rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.95rem;
+    }
+
+    /* FORM */
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #4b433d;
+      margin-bottom: 0.2rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      border-radius: 0.6rem;
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.75rem;
+      font-size: 0.88rem;
+      background: #fff;
+      color: var(--text-main);
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .helper-text {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #fdfbf8;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 14px 32px rgba(18, 77, 46, 0.4);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      margin-top: 0.3rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(18, 77, 46, 0.45);
+      background: #294b31;
+    }
+
+    /* SIDE INFO */
+
+    .side-title {
+      font-family: "Georgia", serif;
+      font-size: 1.1rem;
+      color: #2f2a25;
+      margin-bottom: 0.5rem;
+    }
+
+    .side-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .side-block {
+      background: #fdf7f0;
+      border-radius: 0.7rem;
+      border: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      font-size: 0.88rem;
+      color: #4b433d;
+      margin-bottom: 0.7rem;
+    }
+
+    .side-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .side-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.8rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fdf7f0;
+    }
+
+    .footer-inner {
+      padding: 0.9rem 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.86rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a {
+      color: #4b433d;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      header { position: static; }
+      .nav-center { display: none; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header>
+      <div class="container nav">
+        <div class="nav-left">
+          <div class="logo-mark"></div>
+          <div class="logo-text">REWEAR</div>
+        </div>
+
+        <nav class="nav-center">
+          <a href="index.html">Home</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="marketplace.html">Marketplace</a>
+          <a href="sell.html">Sell</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html" class="active">Contact Us</a>
+        </nav>
+
+        <div class="nav-right">LOGIN / SIGN UP</div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- HEADER -->
+      <section class="page-header">
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-subtitle">
+          Have a question, idea or bit of feedback about Rewear? Send us a message and we’ll get back
+          to you as soon as we can.
+        </p>
+      </section>
+
+      <!-- CONTACT GRID -->
+      <section class="contact-section">
+        <div class="container contact-grid">
+          <!-- FORM -->
+          <div class="card">
+            <form onsubmit="event.preventDefault(); alert('Prototype only – this form does not send an email.');">
+              <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your full name" required />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="you@example.com" required />
+                <div class="helper-text">We’ll only use this to reply to your message.</div>
+              </div>
+
+              <div>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="What would you like to talk about?" required />
+              </div>
+
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Share your question, feedback or idea here..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Send message
+              </button>
+            </form>
+          </div>
+
+          <!-- SIDE INFO -->
+          <aside class="card">
+            <h2 class="side-title">How to reach us</h2>
+            <p class="side-text">
+              Rewear is currently in a prototype stage. Use this page in your coursework to show how
+              users could contact the team in a real product.
+            </p>
+
+            <div class="side-block">
+              <div class="side-label">Email</div>
+              <div>hello@rewear-platform.com</div>
+            </div>
+
+            <div class="side-block">
+              <div class="side-label">Response time</div>
+              <div>We aim to respond within 2–3 working days.</div>
+            </div>
+
+            <div class="side-note">
